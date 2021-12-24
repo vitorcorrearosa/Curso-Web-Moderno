@@ -11,4 +11,4 @@ while (opcao != -1) {
     opcao = getInteiroAleatorioEntre(-1, 100)
     console.log(`O número escolhido foi: ${opcao}.`)
 }
-console.log(`Foram ecolhidos  ${contador} números antes de fechar a repetição`) // só botei por curiosidade msm
+console.log(`Foram ecolhidos ${contador} números antes de fechar a repetição`) // só botei por curiosidade msm
