@@ -1,18 +1,18 @@
-const bhaskra = function (ax2, bx, c) {
-  if (bx >= 0 && c >= 0) {
-    const bhaskra = Math.pow(ax2, 2) + bx + c
-  } else if (bx <= 0 && c >= 0) {
-    bhaskra = Math.pow(ax2, 2) - bx + c
-  } else if (bx >= 0 && c <= 0) {
-    bhaskra = Math.pow(ax2, 2) + bx - c
-  } else if (bx <= 0 && c <= 0) {
-    bhaskra = Math.pow(ax2, 2) - bx - c
+// elabore uma função cujo objetivo é resolver a fórmula de Bhaskara
+function bhaskara(ax2, bx, c) {
+  let resultados = []
+  let delta = bx ** 2 - 4 * ax2 * c
+
+  if (delta < 0) {
+    return 'Delta negativo!'
   }
-  if (bhaskra < 0) {
-    return console.log('Delta é negativo')
-  } else {
-    return console.log(`${bhaskra}`)
-  }
+
+  let x1 = (-bx + Math.sqrt(delta)) / (2 * ax2)
+  let x2 = (-bx - Math.sqrt(delta)) / (2 * ax2)
+  resultados.push(x1)
+  resultados.push(x2)
+  return resultados
 }
 
-bhaskra(-12, 5, 6)
+console.log(bhaskara(1, 3, 2))
+console.log(bhaskara(3, 1, 2))
