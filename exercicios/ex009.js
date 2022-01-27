@@ -9,17 +9,27 @@ seja, que evite a reprovação do aluno. No caso de a nota ser 38, o arredondame
 e o aluno será aprovado.
 */
 
-function sistemaNotas(nota) {
-  let diferenca = 0
-  const arredondamento = nota % 5
+/* OLHEI RESPOSTA */
 
-  while (diferenca < 2) {
-    if (arredondamento != 0) {
-      diferenca++
-    }
+function classificaAluno(nota) {
+  let notaCorrigida = arredondar(nota)
+  if (notaCorrigida >= 40) {
+    console.log(`Aprovado com nota ${notaCorrigida}`)
+  } else {
+    console.log(`Reprovado com nota ${notaCorrigida}`)
   }
-
-  return console.log(nota)
 }
 
-sistemaNotas(58)
+function arredondar(nota) {
+  if (nota % 5 > 2) {
+    return nota + (5 - (nota % 5))
+  } else {
+    return nota
+  }
+}
+
+classificaAluno(100)
+classificaAluno(30)
+classificaAluno(38)
+classificaAluno(88)
+classificaAluno(61)
