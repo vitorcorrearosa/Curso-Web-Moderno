@@ -1,24 +1,24 @@
-// J = C × i × t
-// J = juros simples;
-// C = capital inicial;
-// i = taxa de juros;
-// t = tempo da aplicação
+/* 
+ Elabore duas funções que recebem três parâmetros: capital inicial, taxa de juros e tempo de aplicação. A
+primeira função retornará o montante da aplicação financeira sob o regime de juros simples e a segunda
+retornará o valor da aplicação sob o regime de juros compostos.
 
-const jurosSimples = function (capitalInicial, taxaJuros, tempoAplicacao) {
-  const jurosSimples = capitalInicial * taxaJuros * tempoAplicacao
-  return console.log(
-    `Juros simples: R$${jurosSimples.toFixed(2).replace('.', ',')}`
-  )
+M = C*(1+i)**n 
+M = C + J
+J = M - C
+
+J = C * i * t
+*/
+
+function jurosCompostos(capital, taxa, tempo) {
+  compostos = capital * (1 + taxa) ** tempo
+  return compostos
 }
 
-jurosSimples(500, 100, 20)
-
-const jurosCompostos = function (capitalInicial, taxaJuros, tempoAplicacao) {
-  const montante = capitalInicial * Math.pow(1 + taxaJuros, tempoAplicacao)
-  const jurosCompostos = montante - capitalInicial
-  return console.log(
-    `Juros Compostos: R$${jurosCompostos.toFixed(2).replace('.', ',')}`
-  )
+function jurosSimples(capital, taxa, tempo) {
+  simples = capital * taxa * tempo
+  return simples
 }
 
-jurosCompostos(500, 100, 20)
+console.log(`Juros Simples: R$${jurosSimples(500, 10, 20)}`)
+console.log(`Juros Compostos: R$${jurosCompostos(500, 10, 20)}`)

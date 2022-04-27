@@ -1,31 +1,36 @@
-// escreva uma função que ao recebê-la irá comparar os valores um a um e irá retornar um
-//  vetor com o número de vezes que ele bateu seu recorde de maior número de pontos e quando fez seu pior
-// jogo
+/* Pedro joga N jogos de basquete por temporada. Para saber como está ele está progredindo, ele mantém
+registro de todos os as pontuações feitas por jogo. Após cada jogo ele anota no novo valor e confere se o
+mesmo é maior ou menor que seu melhor e pior desempenho. Dada uma lista string = “pontuação1 pontuação2
+pontuação3 etc..”, escreva uma função que ao recebê-la irá comparar os valores um a um e irá retornar um
+vetor com o número de vezes que ele bateu seu recorde de maior número de pontos e quando fez seu pior
+jogo. (Número do pior jogo).
+Obs.: O primeiro jogo não conta como novo recorde do melhor.
+Exemplo:
+String: “10 20 20 8 25 3 0 30 1”
+Retorno: [3, 7] (Significa que ele bateu três vezes seu recorde de melhor pontuação e a pior pontuação
+aconteceu no sétimo jogo.)
+*/
 
-const pontos = []
+let stringPontuacoes = '10, 15, 29, 50, 40, , 9, 20, 15, 30, 43, 0'
 
-const comparaPontuacao = function (pontos) {
-  let pontuacao
-  let menorPontuacao = ''
-  let maiorPontuacao = ''
-  let numeroRecordes = ''
-  let numeroFracassos = ''
+function avaliaPontuacoes(stringPontuacoes) {
+  let pontuacoes = stringPontuacoes.split(', ')
+  let recordes = 0
+  let piorJogo = 1
+  let maiorPontuacao = pontuacoes[0]
+  let menorPontuacao = pontuacoes[0]
 
-  for (let i in pontos) {
-    pontuacao = pontos[i]
-    if (menorPontuacao == 0) {
-      menorPontuacao = pontuacao
-    } else if (pontuacao < menorPontuacao) {
-      menorPontuacao = pontuacao
-      numeroFracassos++
-    } else if (pontuacao > maiorPontuacao) {
-      maiorPontuacao = pontuacao
-      numeroRecordes++
+  for (let i = 1; i < pontuacoes.length; i++) {
+    if (pontuacoes[i] > maiorPontuacao) {
+      maiorPontuacao = pontuacoes[i]
+      recordes++
+    } else if (pontuacoes[i] < menorPontuacao) {
+      menorPontuacao = pontuacoes[i]
+      piorJogo = i + 1
     }
   }
 
-  return console.log(`Sua maior pontuação foi: ${maiorPontuacao} batendo o recorde ${numeroRecordes} vezes.
-Sua menor pontuação foi: ${menorPontuacao} fracassando ${numeroFracassos} vezes.`)
+  return `Você bateu seu recorde ${recordes} vezes! Sua melhor pontuação foi feita no jogo ${maiorPontuacao} e sua pior foi ${menorPontuacao} feita no jogo de número ${piorJogo}`
 }
 
-comparaPontuacao([2, 3, 4, 2, 1, 9, 4, 10])
+console.log(avaliaPontuacoes(stringPontuacoes))
