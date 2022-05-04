@@ -15,35 +15,30 @@ seja, que evite a reprovação do aluno. No caso de a nota ser 38, o arredondame
 e o aluno será aprovado.
 */
 
-function calculaDiferenca(nota) {
-  this.diferenca = 0
+function arredondaNota(nota) {
+  let notaArredondada = 0
   let i = nota
-
-  while (i % 5 != 0) {
-    diferenca++
-    i++
-  }
-  return diferenca
-}
-
-function arredondaNota(nota, diferenca) {
-  let notaArredondada
+  let diferenca = 0
 
   if (nota < 38) {
-    return `Aluno reprovado! Nota: ${nota}`
-  } else if (diferenca < 3) {
-    notaArredondada = nota + diferenca
-    return `Aluno aprovado! Nota: ${notaArredondada}`
-  } else {
     notaArredondada = nota
-    return `Aluno aprovado! Nota: ${notaArredondada}`
+    return console.log(`Aluno Reprovado com a nota ${notaArredondada}`)
+  } else {
+    while (i % 5 != 0) {
+      diferenca++
+      i++
+    }
+
+    if (diferenca < 3) {
+      notaArredondada = nota + diferenca
+      return console.log(`Aluno Aprovado com a nota ${notaArredondada}`)
+    } else {
+      notaArredondada = nota
+      return console.log(`Aluno Aprovado com a nota ${notaArredondada}`)
+    }
   }
 }
 
-function sistemaNota(nota) {
-  calculaDiferenca(nota)
-  arredondaNota(nota, diferenca)
-}
-
-console.log(sistemaNota(12))
-console.log(sistemaNota(13))
+arredondaNota(29)
+arredondaNota(53)
+arredondaNota(91)
